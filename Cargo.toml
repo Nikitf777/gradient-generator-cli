@@ -1,0 +1,15 @@
+[package]
+name = "gradient-generator-cli"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.100"
+gradient-generator = { git = "https://github.com/Nikitf777/gradient-generator.git" }
+
+[profile.release]
+opt-level = "z"
+strip = "symbols"
+lto = true
+codegen-units = 1
+panic = "abort"
