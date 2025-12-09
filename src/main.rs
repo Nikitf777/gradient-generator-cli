@@ -7,7 +7,7 @@ use std::{
 	path::Path,
 };
 
-const SEPARATOR: &str = ",";
+const SEPARATOR: &str = "/";
 
 fn main() -> Result<()> {
 	let args: Vec<String> = std::env::args().collect();
