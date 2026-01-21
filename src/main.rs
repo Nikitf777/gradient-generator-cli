@@ -1,5 +1,6 @@
 use anyhow::{Context, Result};
 use gradient_generator::extract_gradient_hex;
+use opencv::prelude::ColorTraitConst;
 use std::fs::File;
 use std::{
 	fs::{self, OpenOptions},
@@ -42,6 +43,14 @@ fn main() -> Result<()> {
 	let result = extract_gradient_hex(&absolute_path)
 		.context(format!("Error processing image: {:?}", absolute_path))?;
 
+	let start_vec = result.start_color.to_vec3b()?;
+	let start_hex = format!(
+		"#{:02x}{:02x}{:02x}",
+		start_vec[2], start_vec[1], start_vec[0]
+	);
+	let end_vec = result.end_color.to_vec3b()?;
+	let end_hex = format!("#{:02x}{:02x}{:02x}", end_vec[2], end_vec[1], end_vec[0]);
+
 	if let Ok(mut file) = OpenOptions::new()
 		.create(true)
 		.append(true)
@@ -51,19 +60,13 @@ fn main() -> Result<()> {
 		writeln!(
 			file,
 			"{}{}{}{}{}{}{}",
-			base_name,
-			SEPARATOR,
-			result.start_color,
-			SEPARATOR,
-			result.end_color,
-			SEPARATOR,
-			rounded_angle
+			base_name, SEPARATOR, start_hex, SEPARATOR, end_hex, SEPARATOR, rounded_angle
 		)
 		.ok();
 	}
 
-	println!("{}", result.start_color);
-	println!("{}", result.end_color);
+	println!("{}", start_hex);
+	println!("{}", end_hex);
 	println!("{}", result.angle.round() as i32);
 
 	Ok(())
