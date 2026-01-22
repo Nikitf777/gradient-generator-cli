@@ -40,7 +40,7 @@ fn main() -> Result<()> {
 		}
 	}
 
-	let result = extract_gradient_hex(&absolute_path)
+	let result = extract_gradient_hex(&absolute_path, 200, 50.0)
 		.context(format!("Error processing image: {:?}", absolute_path))?;
 
 	let start_vec = result.start_color.to_vec3b()?;

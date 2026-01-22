@@ -94,7 +94,7 @@ checksum = "0cc23270f6e1808e30a928bdc84dea0b9b4136a8bc82338574f23baf47bbd280"
 [[package]]
 name = "gradient-generator"
 version = "0.1.0"
-source = "git+https://github.com/Nikitf777/gradient-generator.git#448734b14dff76a9480f3f7b67e6b4a3a5b4e48a"
+source = "git+https://github.com/Nikitf777/gradient-generator.git#9e4872c3c8eea5c8438b42ec62e1b1cbcf03aef8"
 dependencies = [
  "anyhow",
  "opencv",
