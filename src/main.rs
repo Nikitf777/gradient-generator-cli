@@ -8,7 +8,7 @@ use std::{
 	path::Path,
 };
 
-const SEPARATOR: &str = "/";
+const SEPARATOR: &str = "/"; // Use a charackter, that a filename cannot contain
 
 fn main() -> Result<()> {
 	let args: Vec<String> = std::env::args().collect();
