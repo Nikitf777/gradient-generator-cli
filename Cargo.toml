@@ -5,6 +5,7 @@ edition = "2024"
 
 [dependencies]
 anyhow = "1.0.100"
+clap = { version = "4.5.54", features = ["derive"] }
 gradient-generator = { git = "https://github.com/Nikitf777/gradient-generator.git" }
 opencv = "0.97.2"
 
